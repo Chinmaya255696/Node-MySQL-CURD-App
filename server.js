@@ -1,16 +1,14 @@
-const db = require('./DB/db')
+const db = require("./DB/db");
 const express = require("express");
-
-
 
 // create express app
 var app = express();
 
 if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
-  }
+  require("dotenv").config();
+}
 
-  // parse requests of content-type - application/json
+// parse requests of content-type - application/json
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded

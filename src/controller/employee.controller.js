@@ -29,12 +29,16 @@ exports.createEmployee = async (req, res) => {
 
     const result = await Employee.create(newEmployee); // Insert employee data into database
 
-    res.status(201).json({ message: 'Employee record created successfully!', id: result.insertId });
+    res
+      .status(201)
+      .json({
+        message: "Employee record created successfully!",
+        id: result.insertId,
+      });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Error creating employee record' });
+    res.status(500).json({ message: "Error creating employee record" });
   }
-  
 };
 
 exports.deleteEmployee = async (req, res) => {
@@ -42,16 +46,14 @@ exports.deleteEmployee = async (req, res) => {
     const id = req.params.id;
     const result = await Employee.deleteById(id);
     if (result === 0) {
-      return res.status(404).json({ message: 'Employee not found' });
+      return res.status(404).json({ message: "Employee not found" });
     }
-    return res.json({ message: 'Employee deleted successfully' });
+    return res.json({ message: "Employee deleted successfully" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
 
 // exports.updateEmployee = async (req, res, next) => {
 //   try {
@@ -66,8 +68,6 @@ exports.deleteEmployee = async (req, res) => {
 //     next(error);
 //   }
 // };
-
-
 
 exports.updateEmployee = async (req, res) => {
   const id = req.params.id;
@@ -92,7 +92,3 @@ exports.updateEmployee = async (req, res) => {
     });
   }
 };
-
-
-
-
